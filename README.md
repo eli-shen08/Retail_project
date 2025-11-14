@@ -20,22 +20,42 @@ This project demonstrates real-world, enterprise-grade practices using the **Med
   - Loaded into ADLS Bronze layer
   - Parallel ingestion for improved performance
 
-## ✨ Data Creation
-First I have created a Schema & Multiple Tables inside Azure SQL Database, the code can be found [db.sql](db.sql). <br/>
-After that I have upload [customers.json](customers.json) file in a github repsitory so that I can fetch it using an API request.
+  ## ✨ Data Creation
+  First I have created a Schema & Multiple Tables inside Azure SQL Database, the code can be found [db.sql](db.sql). <br/>
+  After that I have upload [customers.json](customers.json) file in a github repsitory so that I can fetch it using an API request.
+  
+  First I have used a **LookUp Activity** and to get the Tables Names under the **Retail** Schema.
+  ![LookUp](pic/lookup_query.png)
+  
+  ### ✨ Extract retail Data
+  After that I have used a **ForEach** activity so I can ingest the data from the tables parallely.<br/>
+  Inside the **ForEach** I have two **Copy Activity** one for SQL Database and another to copy from Github, <br/>
+  ![Inside](pic/inside_ForEach.png)
+  
+  Inside the first Copy this is the query to get the data from all the tables. <br/>
+  ![Copy1](pic/Copy1.png)
+  
+  #### ✨ Logic App Email Confirmation
+  After that i am send a **Confirmation Email** via a **LogicApp** for the completion of the bronze layer. I have actually created 2 more apps for silver and gold layers as well. <br/>
+  ![pic/emailapp.png](pic/emailapp.png)
+  Logic App Design is same for each one just parameters are different.<br/>
+  ![logicdesign.png](pic/logicdesign.png)
+  
+  **Now we have our data in out bronze layer.**
 
-First I have used a **LookUp Activity** and to get the Tables Names under the **Retail** Schema.
-![LookUp](pic/lookup_query.png)
+## ✨ Data Transformation (DataBricks)
+  🔹 2. Automated Workflow<br/>
+        - On successful Bronze load → Logic App sends confirmation email<br/>
+        - Silver Databricks notebook triggers automatically<br/>
+        - It processes the data and saves the data in **Delta** format.<br/>
+        - On success → second confirmation email<br/>
+    Check out the notebook --> [bronzeToSilver.ipynb](bronzeToSilver.ipynb)
 
-### ✨ Extract retail Data
-After that I have used a **ForEach** activity so I can ingest the data from the tables parallely.<br/>
-Inside the **ForEach** I have two **Copy Activity** one for SQL Database and another to copy from Github, <br/>
-![Inside](pic/inside_ForEach.png)
+   **Now we have our data in out Silver layer.**
+        - Next Gold Databricks notebook triggers automatically<br/>
+        - It creates Dimesion, Fact, Aggregrate tables.
+        - Also I have implemented star schema.
+   
 
-Inside the first Copy this is the query to get the data from all the tables. <br/>
-![Copy1](pic/Copy1.png)
 
-#### ✨ Logic App Email Confirmation
-After that i am send a **Confirmation Email** via a **LogicApp** for the completion of the bronze layer. I have actually created 2 more apps for silver and gold layers as well. <br/>
-![pic/emailapp.png](pic/emailapp.png)
 

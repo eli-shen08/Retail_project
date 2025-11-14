@@ -39,23 +39,30 @@ This project demonstrates real-world, enterprise-grade practices using the **Med
   After that i am send a **Confirmation Email** via a **LogicApp** for the completion of the bronze layer. I have actually created 2 more apps for silver and gold layers as well. <br/>
   ![pic/emailapp.png](pic/emailapp.png)
   Logic App Design is same for each one just parameters are different.<br/>
-  ![logicdesign.png](pic/logicdesign.png)
+  ![logicdesign.png](pic/logicdesign.png)<br/>
   
   **Now we have our data in out bronze layer.**
 
 ## ✨ Data Transformation (DataBricks)
-  🔹 2. Automated Workflow<br/>
+  🔹 2. Automated Workflow  
         - On successful Bronze load → Logic App sends confirmation email<br/>
         - Silver Databricks notebook triggers automatically<br/>
         - It processes the data and saves the data in **Delta** format.<br/>
         - On success → second confirmation email<br/>
-    Check out the notebook --> [bronzeToSilver.ipynb](bronzeToSilver.ipynb)
+        Check out the notebook --> [bronzeToSilver.ipynb](bronzeToSilver.ipynb)
 
-   **Now we have our data in out Silver layer.**
+   **Now we have our data in out Silver layer.**<br/>
         - Next Gold Databricks notebook triggers automatically<br/>
-        - It creates Dimesion, Fact, Aggregrate tables.
+        - It creates **Dimesion, Fact, Aggregrate tables**.
         - Also I have implemented star schema.
-   
+   ![Star Schema](pic/starschema.png)
+
+ **This entire workflow was done through Azure Data Factory**
+
+
+ ## ✨ Data Analytics and Visualization
+   🔹3. Downloaded the aggregrate file as csv and visualized data.
+   ![graphs.png](pic/graphs.png)
 
 
 

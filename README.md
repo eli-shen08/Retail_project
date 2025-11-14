@@ -11,7 +11,7 @@ This project demonstrates real-world, enterprise-grade practices using the **Med
 #### Full Pipeline in ADF
 ![Full Pipe](pic/full_pipe.png)
 
-✨ Key Features
+## ✨ Key Features
 🔹 1. Multi-Source Data Ingestion
 
   - Extract retail data from:
@@ -20,9 +20,22 @@ This project demonstrates real-world, enterprise-grade practices using the **Med
   - Loaded into ADLS Bronze layer
   - Parallel ingestion for improved performance
 
-## Data Creation
+## ✨ Data Creation
 First I have created a Schema & Multiple Tables inside Azure SQL Database, the code can be found [db.sql](db.sql). <br/>
 After that I have upload [customers.json](customers.json) file in a github repsitory so that I can fetch it using an API request.
 
-First I have used a **LookUp Activity** and to get the Tables Names under the **Retail** Schema. 
+First I have used a **LookUp Activity** and to get the Tables Names under the **Retail** Schema.
+![LookUp](pic/lookup_query.png)
+
+### ✨ Extract retail Data
+After that I have used a **ForEach** activity so I can ingest the data from the tables parallely.<br/>
+Inside the **ForEach** I have two **Copy Activity** one for SQL Database and another to copy from Github, <br/>
+![Inside](pic/inside_ForEach.png)
+
+Inside the first Copy this is the query to get the data from all the tables. <br/>
+![Copy1](pic/Copy1.png)
+
+#### ✨ Logic App Email Confirmation
+After that i am send a **Confirmation Email** via a **LogicApp** for the completion of the bronze layer. I have actually created 2 more apps for silver and gold layers as well. <br/>
+![pic/emailapp.png](pic/emailapp.png)
 

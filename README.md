@@ -64,5 +64,23 @@ This project demonstrates real-world, enterprise-grade practices using the **Med
    🔹3. Downloaded the aggregrate file as csv and visualized data.
    ![graphs.png](pic/graphs.png)
 
+## 🧰 Tech Stack
+### Component            
+- **Azure Data Factory**
+- **Azure SQL Database**	
+- **GitHub Repo	Additional data source**
+- **ADLS Gen2	Bronze/Silver/Gold storage**
+- **Azure Databricks	Transformations, notebooks**
+- **Azure Logic App	Email confirmation alerts**
+- **Data Visualization Python Matplotlib.**
+
+## 🔚 Conclusion
+This end-to-end Azure Data Engineering project demonstrates how modern retail data can be efficiently ingested, processed, transformed, and visualized using a fully cloud-native architecture. By combining Azure Data Factory, Azure Databricks, ADLS Gen2, Azure SQL DB, and Logic Apps, the project follows the Medallion Architecture (Bronze → Silver → Gold) to ensure clean, reliable, and analytics-ready data.
+
+## 👤 Author
+
+## Rahul Mondal
+[LINKEDIN](https://www.linkedin.com/in/rahul-mondal08/)
+EMAIL - mondal.rahul1999@gmail.com<br/>
 
 

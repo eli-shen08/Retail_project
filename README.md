@@ -80,7 +80,7 @@ This end-to-end Azure Data Engineering project demonstrates how modern retail da
 ## 👤 Author
 
 ## Rahul Mondal
-[LINKEDIN](https://www.linkedin.com/in/rahul-mondal08/)
+[LINKEDIN](https://www.linkedin.com/in/rahul-mondal08/)<br/>
 EMAIL - mondal.rahul1999@gmail.com<br/>
 
 
